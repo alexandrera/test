@@ -1,70 +1,24 @@
- -- Setup instructions for windows -- 
+### How to run this automated test
 
-1. Install Chocolatey
+### Windows
+1. Download and install eclipse latest version at [eclipse website](https://www.eclipse.org/downloads/)
+2. Download latest Chromedriver at [google website](https://sites.google.com/a/chromium.org/chromedriver/)
+3. Download latest version of Selenium Standalone Server at [selenium website](https://www.seleniumhq.org/download/)
+4. Clone this project and open it on eclipse IDE
+5. Move both **chromedriver** and **selenium standalone server** files to `c:/` or desirable folder
+6. Update project by using `Alt + F5` 
+7. Run the file `Test.java` as `TestNG Test`
 
-https://chocolatey.org/install
+### Linux
+1. Download and install eclipse latest version at [eclipse website](http://www.eclipse.org/downloads/packages/)
+2. Download latest Chromedriver at [google website](https://sites.google.com/a/chromium.org/chromedriver/)
+3. Download latest version of Selenium Standalone Server at [selenium website](https://www.seleniumhq.org/download/)
+4. Clone this project and open it on eclipse IDE
+5. Move both **chromedriver** and **selenium standalone server** files to `/home` or desirable folder
+6. Remove comment the code `// public static final String pathProperty = "/home/chromedriver";` and comment `public static final String pathProperty = "C:/chromedriver.exe";`
+7. Update project by using `Alt + F5` 
+8. Run the file `Test.java` as `TestNG Test`
 
-Command to install chocolatey (command prompt):
-
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-
-2. Cucumber
-
-Before we begin, you will need the following:
-
-Java SE (Java 9 is not yet supported by Cucumber)
-
-Maven - version 3.3.1 or higher
-
-Eclipse (a good alternative if you don’t use IntelliJ)
-
-Cucumber Eclipse
-
-Use chocolatey to install the items above if you don't have them (command prompt):
-
-C:\> choco install jdk8
-
-C:\> choco install maven
-
-C:\> choco install eclipse
-
-3. Add the file selenium-server-standalone-3.14.0.jar and chromedriver.exe in the (C:) drive
-
-Selenium Server: https://goo.gl/FCSwwD
-
-Chromedriver: 	 https://chromedriver.storage.googleapis.com/index.html?path=2.42/
-
-4. Clone the project into a folder
-
--- Instruction to run --
-
-5. Open folder on command prompt and use: 
-
-mvn test
-
-or
-
-Scenario outline: mvn test -Dcucumber.options="--tags @outline"
-
-Scenario: 		  mvn test -Dcucumber.options="--tags @smoke"
-
--- Why --
-
-Language:
-I have chosen java due to its massive adoption and to be the one I have most familiarity.
-Page Object due to its maintainability and JUnit because it's the default used by cucumber.
-
-Feature file (Gherkin):
-There is one feature, there are two scenarios and one background.
-The background is in charge of creating the precondition of the test (Login).
-The scenario outline is used with parameters, so with the same test we can test two conditions.
-The single scenario is to test specific action. 
-
--- Explanation --
-
-Frameworks and Structure:
-Besides cucumber was obligatory in this test, it is a effective way to document, test and share the software  expectations in terms of behaviour (acceptance criteria and quality). 
-This project is built using Cucumber (Gherkin) along with Selenium Framework and JUnit in order to simulate user interaction with web application. The selenium framework is structured with the Page Object class, where all screen elements are stored along with methods to be called by JUnit at step definitions class. Maven is in charge to compile and run the tests from POM file in the root project directory.
-
-A good way to see this project is:
-Maven > Gherkin (Human Language) > Step Definition (JUnit + Page Object + Selenium Webdriver) > Browser driver > Http requests > Web App
+### Troubleshoot
+* If **Selenium Standalone Server** is not found, please add it to buildpath `Project > Java Build Path > Libraries > Add External JARs > Select file > Apply > Apply and Close`
+* Update project by using `Alt + F5` 
