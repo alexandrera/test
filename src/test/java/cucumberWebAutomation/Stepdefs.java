@@ -8,9 +8,6 @@ import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.text.Format;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Keys;
@@ -54,8 +51,6 @@ public class Stepdefs {
 		WebElement we2 = PageObject.ViewShoppingCart(driver);
 		action2.moveToElement(we2).build().perform();
 		PageObject.ProductName(driver).getText().equals("Printed Summer Dress");
-		// Valide se o produto foi corretamente adicionado ao carrinho e prossiga caso
-		// esteja tudo certo.
 
 	}
 
